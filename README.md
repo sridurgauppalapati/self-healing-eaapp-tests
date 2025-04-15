@@ -36,18 +36,8 @@ Or add it to src/main/resources/config.properties
 
 3. Project Structure
 
-self-healing-eaapp-tests/
-├── src/
-│   ├── main/java/com/eaapp/
-│   │   ├── core/               # Framework core logic
-│   │   ├── locators/           # Locator repository
-│   └── test/java/com/eaapp/
-│       └── tests/              # Test classes
-│   └── main/resource/com/eaapp/
-├──     └── healed_locators.json        # Auto-generated healed locators
-        └── config.properties
-├── pom.xml                     # Maven configuration
-└── testng.xml                  # TestNG suite configuration
+
+![image](https://github.com/user-attachments/assets/fc74148e-8c41-4f52-98ec-ca03dc7fe18f)
 
 4. Configuration
     Edit src/main/resources/config.properties:
