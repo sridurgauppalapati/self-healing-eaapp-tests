@@ -66,9 +66,9 @@ max.healing.attempts=3
 
 **How Self-Healing Works**
 
-**Detection: **Framework detects a NoSuchElementException
+**Detection:** Framework detects a NoSuchElementException
 
-**Recovery: **Checks local healed_locators.json for alternatives. If none found, queries GPT-4 for new locators. Validates suggested locators
+**Recovery:** Checks local healed_locators.json for alternatives. If none found, queries GPT-4 for new locators. Validates suggested locators
 
-**Persistence: **Successful locators are saved for future runs
+**Persistence:** Successful locators are saved for future runs
 
