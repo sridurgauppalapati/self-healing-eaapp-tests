@@ -13,7 +13,7 @@ public class EAAppBaseTest {
     protected static final Logger logger = LoggerFactory.getLogger(EAAppBaseTest.class);
     protected WebDriver driver;
     protected EAAppElementFinder elementFinder;
-    private static final String HEALED_LOCATORS_FILE = "healed_locators.json";
+    private static final String HEALED_LOCATORS_FILE = "com/eaapp/resources/healed_locators.json";
     
     @BeforeSuite
     public void beforeSuite() {

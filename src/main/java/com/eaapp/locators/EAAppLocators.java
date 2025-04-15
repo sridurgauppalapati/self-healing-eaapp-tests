@@ -22,6 +22,9 @@ public class EAAppLocators {
      LOCATORS.put("LoginButton", "//input[@value='Log in']");
      DESCRIPTIONS.put("LoginButton", "Login submit button");
      
+     LOCATORS.put("LogoutButton", "//form[@id='logoutForm']");
+     DESCRIPTIONS.put("LoginButton", "Logout button");
+     
      // Employee Page
      LOCATORS.put("EmployeeListLink", "//a[contains(text(),'Employee List')]");
      DESCRIPTIONS.put("EmployeeListLink", "Employee List navigation link");

@@ -1,0 +1,11 @@
+{
+  "LoginLink": "//a[contains(@href,'Login')]",
+  "UserName": "//input[@name='UserName']",
+  "Password": "//input[@type='password' and @name='Password']",
+  "LoginButton": "//input[@type='submit' and contains(@value,'Log in')]",
+  "EmployeeListLink": "//a[text()='Employee List' or contains(@href,'Employee')]",
+  "CreateNewLink": "//a[contains(text(),'Create') and contains(@href,'Create')]",
+  "Name": "//input[@id='Name' or @name='Name']",
+  "Salary": "//input[contains(@id,'Salary') or @name='Salary']",
+  "CreateButton": "//input[@value='Create' or contains(@type,'submit')]"
+}
