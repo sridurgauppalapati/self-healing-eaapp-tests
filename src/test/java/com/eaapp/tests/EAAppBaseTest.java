@@ -2,7 +2,12 @@
 package com.eaapp.tests;
 
 import com.eaapp.core.EAAppElementFinder;
+
+import java.util.List;
+import java.util.Random;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -56,6 +61,10 @@ public class EAAppBaseTest {
         elementFinder.findElement(elementKey).click();
     }
     
+    protected void clear(String elementKey) {
+        elementFinder.findElement(elementKey).clear();
+    }
+    
     protected void sendKeys(String elementKey, String text) {
         elementFinder.findElement(elementKey).sendKeys(text);
     }
@@ -63,4 +72,35 @@ public class EAAppBaseTest {
     protected String getElementText(String elementKey) {
         return elementFinder.findElement(elementKey).getText();
     }
+    protected int getRandomNumDurationWorked(int minHours, int maxHours) {
+        Random random = new Random();
+        return random.nextInt(maxHours - minHours + 1) + minHours;
+    }
+    protected boolean isEmployeePresent(String elements, String expectedText) {
+        List<WebElement> employeeNameList = elementFinder.findElements(elements);
+        
+        if (employeeNameList.isEmpty()) {
+            logger.info("No employees found in the list");
+            return false;
+        }
+
+        boolean found = false;
+        for (WebElement element : employeeNameList) {
+            String employeeName = element.getText().trim();
+            logger.debug("Checking employee name: {}", employeeName);
+            
+            if (employeeName.equals(expectedText)) {
+                found = true;
+                logger.info("Employee found in the list: {}", expectedText);
+                break;
+            }
+        }
+
+        if (!found) {
+            logger.info("Employee not found in the list: {}", expectedText);
+        }
+        
+        return found;
+    }
+
 }

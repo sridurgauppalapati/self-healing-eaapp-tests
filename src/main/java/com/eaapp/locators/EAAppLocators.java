@@ -38,7 +38,13 @@ public class EAAppLocators {
      LOCATORS.put("Salary", "//input[@id='Salary']");
      DESCRIPTIONS.put("Salary", "Employee salary input field");
      
+     LOCATORS.put("DurationWorked", "//input[@id='DurationWorked']");
+     DESCRIPTIONS.put("DurationWorked", "Duration Worked input field");
+     
      LOCATORS.put("CreateButton", "//input[@value='Create']");
      DESCRIPTIONS.put("CreateButton", "Create employee submit button");
+     
+     LOCATORS.put("EmployeeTable", "//table//tbody/tr/td[1]");
+     DESCRIPTIONS.put("EmployeeTable", "Employee Table");
  }
 }

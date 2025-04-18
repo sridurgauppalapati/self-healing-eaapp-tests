@@ -5,7 +5,8 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class LoginTests extends EAAppBaseTest {
-    @Test
+   
+	@Test
     public void testSuccessfulLogin() {
         navigateToLoginPage();
         login("admin", "password");

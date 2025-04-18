@@ -4,22 +4,29 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class EmployeeTests extends EAAppBaseTest {
-    @Test(dependsOnMethods = "testSuccessfulLogin")
+    @Test
     public void testCreateNewEmployee() {
+    	
         navigateToLoginPage();
         login("admin", "password");
         
         clickElement("EmployeeListLink");
         clickElement("CreateNewLink");
         
-        String employeeName = "John Doe " + System.currentTimeMillis();
+        String employeeName = "SriDurga" + System.currentTimeMillis();
         sendKeys("Name", employeeName);
         sendKeys("Salary", "50000");
+        // Duration Worked
+        int duration = getRandomNumDurationWorked(1, 124);
+        clear("DurationWorked");
+        sendKeys("DurationWorked",String.valueOf(duration));
         clickElement("CreateButton");
         
+        
         // Verify employee was created
-        String successMessage = elementFinder.findElement("//div[contains(@class,'alert-success')]").getText();
-        assertTrue(successMessage.contains("Create Successful"));
-    }
+        
+        Boolean employeeExistence = isEmployeePresent("EmployeeTable", employeeName);
+        assertTrue(employeeExistence, "Employee " + employeeName + " found in the table.");
+           }
 }
 
