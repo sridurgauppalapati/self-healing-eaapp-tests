@@ -10,7 +10,7 @@ public class EAAppLocators {
  
  static {
      // Login Page
-     LOCATORS.put("LoginLink", "//a[@id='loginLink']");
+     LOCATORS.put("LoginLink", "//a[@id='loginLink1']");
      DESCRIPTIONS.put("LoginLink", "Login navigation link in header");
      
      LOCATORS.put("UserName", "//input[@id='UserName']");
@@ -22,7 +22,7 @@ public class EAAppLocators {
      LOCATORS.put("LoginButton", "//input[@value='Log in']");
      DESCRIPTIONS.put("LoginButton", "Login submit button");
      
-     LOCATORS.put("LogoutButton", "//form[@id='logoutForm']");
+     LOCATORS.put("LogoutButton", "//form[@id='logoutForm'']");
      DESCRIPTIONS.put("LoginButton", "Logout button");
      
      // Employee Page

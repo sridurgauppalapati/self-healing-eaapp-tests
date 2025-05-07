@@ -1,24 +1,29 @@
 // EAAppBaseTest.java
 package com.eaapp.tests;
 
-import com.eaapp.core.EAAppElementFinder;
-
 import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+
+import com.eaapp.core.EAAppElementFinder;
+import com.eaapp.utils.ConfigReader;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EAAppBaseTest {
     protected static final Logger logger = LoggerFactory.getLogger(EAAppBaseTest.class);
     protected WebDriver driver;
     protected EAAppElementFinder elementFinder;
-    private static final String HEALED_LOCATORS_FILE = "com/eaapp/resources/healed_locators.json";
+
+    private static final String HEALED_LOCATORS_FILE = "src/main/resources/healed_locators.json";
     
     @BeforeSuite
     public void beforeSuite() {
@@ -31,7 +36,7 @@ public class EAAppBaseTest {
         driver.manage().window().maximize();
         
         // Initialize with your OpenAI API key
-        elementFinder = new EAAppElementFinder(driver, "your-openai-api-key");
+        elementFinder = new EAAppElementFinder(driver, ConfigReader.getProperty("openai.api.key"));
         
         // Load previously healed locators
         elementFinder.loadHealedLocatorsFromFile(HEALED_LOCATORS_FILE);
@@ -47,7 +52,7 @@ public class EAAppBaseTest {
     }
     
     protected void navigateToLoginPage() {
-        driver.get("http://eaapp.somee.com/");
+        driver.get(ConfigReader.getProperty("app.url"));
         clickElement("LoginLink");
     }
     
