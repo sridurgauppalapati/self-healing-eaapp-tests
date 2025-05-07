@@ -1,0 +1,27 @@
+# Maven build directory
+target/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Environment-specific config files
+src/main/resources/config-*.properties
+
+# Local configuration file
+.env
