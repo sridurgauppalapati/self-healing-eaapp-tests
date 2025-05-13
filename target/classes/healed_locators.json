@@ -1,3 +1,0 @@
-{
-  "DurationWorked": "//input[contains(@id,'DurationWorked') and contains(@class,'text-box')]"
-}
