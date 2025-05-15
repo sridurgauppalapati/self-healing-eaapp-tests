@@ -12,7 +12,7 @@ public class LoginTests extends EAAppBaseTest {
         login("admin", "password");
         
         // Verify login by checking for logout link
-        assertTrue(elementFinder.findElement("//form[@id='logoutForm']").isDisplayed());
+        assertTrue(elementFinder.findElement(getDriver(),"//form[@id='logoutForm']").isDisplayed());
     }
     
 //    @Test

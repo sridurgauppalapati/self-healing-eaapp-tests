@@ -32,17 +32,17 @@ import com.google.gson.JsonParser;
 
 public class EAAppElementFinder {
     private static final Logger logger = LoggerFactory.getLogger(EAAppElementFinder.class);
-    private WebDriver driver;
-    private String openaiApiKey;
+    // private final WebDriver driver;
+    private final String openaiApiKey;
     private Map<String, String> healedLocators = new ConcurrentHashMap<>();
 
     public EAAppElementFinder(WebDriver driver, String openaiApiKey) {
-        this.driver = driver;
+        // this.driver = driver;
         this.openaiApiKey = ConfigReader.getProperty("openai.api.key");
     }
 
     // Method for finding single element
-    public WebElement findElement(String elementKey) {
+    public WebElement findElement(WebDriver driver,String elementKey) {
         String originalLocator = EAAppLocators.LOCATORS.get(elementKey);
         String elementDescription = EAAppLocators.DESCRIPTIONS.get(elementKey);
 
@@ -60,13 +60,13 @@ public class EAAppElementFinder {
         } catch (Exception e) {
             logger.warn("Caught NoSuchElementException for {}: {}", elementKey, originalLocator);
             logger.warn("Exception details: ", e);
-            return tryHealedLocators(elementKey, originalLocator, elementDescription);
+            return tryHealedLocators(driver, elementKey, originalLocator, elementDescription);
 
         }
     }
 
     // Method for finding multiple elements
-    public List<WebElement> findElements(String elementKey) {
+    public List<WebElement> findElements(WebDriver driver, String elementKey) {
         String originalLocator = EAAppLocators.LOCATORS.get(elementKey);
         String elementDescription = EAAppLocators.DESCRIPTIONS.get(elementKey);
 
@@ -80,10 +80,10 @@ public class EAAppElementFinder {
         }
 
         logger.warn("Original locator failed to find elements for {}: {}", elementKey, originalLocator);
-        return tryHealedLocatorsForMultiple(elementKey, originalLocator, elementDescription);
+        return tryHealedLocatorsForMultiple(driver, elementKey, originalLocator, elementDescription);
     }
 
-    private WebElement tryHealedLocators(String elementKey, String originalLocator, String elementDescription) {
+    private WebElement tryHealedLocators(WebDriver driver,String elementKey, String originalLocator, String elementDescription) {
         String healedLocator = healedLocators.get(elementKey);
         if (healedLocator != null) {
             try {
@@ -92,10 +92,10 @@ public class EAAppElementFinder {
                 logger.warn("Healed locator failed for {}: {}", elementKey, healedLocator);
             }
         }
-        return getNewLocatorFromAI(elementKey, originalLocator, elementDescription);
+        return getNewLocatorFromAI(driver, elementKey, originalLocator, elementDescription);
     }
 
-    private List<WebElement> tryHealedLocatorsForMultiple(String elementKey, String originalLocator,
+    private List<WebElement> tryHealedLocatorsForMultiple(WebDriver driver,String elementKey, String originalLocator,
             String elementDescription) {
         String healedLocator = healedLocators.get(elementKey);
         if (healedLocator != null) {
@@ -105,13 +105,13 @@ public class EAAppElementFinder {
             }
             logger.warn("Healed locator failed for multiple elements {}: {}", elementKey, healedLocator);
         }
-        return getNewLocatorsFromAI(elementKey, originalLocator, elementDescription);
+        return getNewLocatorsFromAI(driver, elementKey, originalLocator, elementDescription);
     }
 
-    private WebElement getNewLocatorFromAI(String elementKey, String originalLocator, String elementDescription) {
+    private WebElement getNewLocatorFromAI(WebDriver driver, String elementKey, String originalLocator, String elementDescription) {
     try {
         String pageSource = driver.getPageSource();
-        String newLocator = callAILocatorHealer(pageSource, originalLocator, elementDescription);
+        String newLocator = callAILocatorHealer(driver, pageSource, originalLocator, elementDescription);
 
         if (newLocator != null) {
             // Since callAILocatorHealer already verified this locator works, we can use it directly
@@ -129,11 +129,11 @@ public class EAAppElementFinder {
 }
 
 
-    private List<WebElement> getNewLocatorsFromAI(String elementKey, String originalLocator,
+    private List<WebElement> getNewLocatorsFromAI(WebDriver driver, String elementKey, String originalLocator,
             String elementDescription) {
         try {
             String pageSource = driver.getPageSource();
-            String newLocator = callAILocatorHealer(pageSource, originalLocator, elementDescription);
+            String newLocator = callAILocatorHealer(driver, pageSource, originalLocator, elementDescription);
 
             if (newLocator != null) {
                 List<WebElement> elements = driver.findElements(By.xpath(newLocator));
@@ -150,7 +150,7 @@ public class EAAppElementFinder {
         return Collections.emptyList();
     }
 
-    private String callAILocatorHealer(String html, String originalLocator, String description) {
+    private String callAILocatorHealer(WebDriver driver, String html, String originalLocator, String description) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         // 1. Use correct API endpoint (was using api key as URL)

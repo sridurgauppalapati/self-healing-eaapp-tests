@@ -9,13 +9,13 @@ public class EAAppLocators {
  
  static {
      // Login Page
-     LOCATORS.put("LoginLink", "//a[@id='loginLink']");
+     LOCATORS.put("LoginLink", "//a[@id='loginLink1']");
      DESCRIPTIONS.put("LoginLink", "Login navigation link in header");
      
      LOCATORS.put("UserName", "//input[@id='UserName']");
      DESCRIPTIONS.put("UserName", "Username input field on login page");
      
-     LOCATORS.put("Password", "//input[@id='Password']");
+     LOCATORS.put("Password", "//input[@id='Password12']");
      DESCRIPTIONS.put("Password", "Password input field on login page");
      
      LOCATORS.put("LoginButton", "//input[@value='Log in']");
