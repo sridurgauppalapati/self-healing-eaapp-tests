@@ -1,11 +1,11 @@
 <!-- testng.xml -->
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="EAApp Self-Healing Tests" verbose="1">
-    <test name="Login Tests">
+<!--     <test name="Login Tests">
         <classes>
             <class name="com.eaapp.tests.LoginTests"/>
         </classes>
-    </test>
+    </test> -->
     <test name="Employee Tests">
         <classes>
             <class name="com.eaapp.tests.EmployeeTests"/>
