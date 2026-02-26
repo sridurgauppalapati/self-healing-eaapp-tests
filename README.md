@@ -9,11 +9,11 @@ A cutting-edge test automation framework with self-healing capabilities that aut
 
 ## Key Features
 
-✨ **Self-Healing Locators** - Automatically detects and fixes broken XPath/CSS selectors  
-🤖 **AI-Powered Recovery** - Uses OpenAI GPT-4 to generate alternative locators  
-📊 **Healing History** - Maintains a repository of healed locators for future runs  
-🚦 **Smart Fallback** - Implements multi-locator strategy for maximum stability  
-📝 **Detailed Reporting** - Comprehensive logs and test execution reports  
+✨ **Self-Healing Locators** - Automatically detects and fixes broken XPath/CSS selectors.
+🤖 **AI-Powered Recovery** - Uses OpenAI GPT-4 to generate alternative locators.
+📊 **Healing History** - Maintains a repository of healed locators for future runs.
+🚦 **Smart Fallback** - Implements multi-locator strategy for maximum stability.
+📝 **Detailed Reporting** - Comprehensive logs and test execution reports.
 
 ## Prerequisites
 
