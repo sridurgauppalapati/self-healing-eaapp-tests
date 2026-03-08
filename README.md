@@ -5,7 +5,7 @@
 ![TestNG](https://img.shields.io/badge/TestNG-7.8.0-red)
 ![Maven](https://img.shields.io/badge/Maven-3.8.1-yellow)
 
-A cutting-edge test automation framework with self-healing capabilities that automatically repairs broken locators using AI (GPT-4).
+ A cutting-edge test automation framework with self-healing capabilities that automatically repairs broken locators using AI (GPT-4).
 
 ## Key Features
 
